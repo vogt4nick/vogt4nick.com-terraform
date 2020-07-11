@@ -26,10 +26,28 @@ resource "aws_iam_user_policy" "DeployVogt4nickStaticSite" {
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": "s3:*",
+      "Action": [
+        "s3:ListBucket"
+      ],
       "Resource": [
         "${aws_s3_bucket.vogt4nick_com.arn}",
         "${aws_s3_bucket.recipes_vogt4nick_com.arn}"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:AbortMultipartUpload",
+        "s3:DeleteObject",
+        "s3:GetObject",
+        "s3:GetObjectAcl",
+        "s3:ListObjectsV2",
+        "s3:PutObject",
+        "s3:PutObjectAcl"
+      ],
+      "Resource": [
+        "${aws_s3_bucket.vogt4nick_com.arn}/*",
+        "${aws_s3_bucket.recipes_vogt4nick_com.arn}/*"
       ]
     }
   ]
