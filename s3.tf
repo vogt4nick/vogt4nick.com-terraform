@@ -4,7 +4,7 @@
 
 resource "aws_s3_bucket" "access_log" {
   bucket = "vogt4nick.com-access-log"
-  acl = "log-delivery-write"
+  acl    = "log-delivery-write"
   region = var.aws_region
 
   server_side_encryption_configuration {
@@ -19,17 +19,17 @@ resource "aws_s3_bucket" "access_log" {
 }
 
 resource "aws_s3_bucket_public_access_block" "access_log" {
-    bucket = aws_s3_bucket.access_log.id
-    block_public_acls = true
-    block_public_policy = true
-    ignore_public_acls = true
-    restrict_public_buckets = true
+  bucket                  = aws_s3_bucket.access_log.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
 
 resource "aws_s3_bucket" "vogt4nick_com" {
   bucket = "vogt4nick.com"
-  acl = "private"
+  acl    = "private"
   region = var.aws_region
 
   website {
@@ -57,7 +57,7 @@ resource "aws_s3_bucket" "vogt4nick_com" {
 
 resource "aws_s3_bucket" "www_vogt4nick_com" {
   bucket = "www.vogt4nick.com"
-  acl = "private"
+  acl    = "private"
   region = var.aws_region
 
   website {
@@ -84,7 +84,7 @@ resource "aws_s3_bucket" "www_vogt4nick_com" {
 
 resource "aws_s3_bucket" "recipes_vogt4nick_com" {
   bucket = "recipes.vogt4nick.com"
-  acl = "private"
+  acl    = "private"
   region = var.aws_region
 
   website {
