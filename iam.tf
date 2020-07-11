@@ -8,7 +8,7 @@
 # https://www.terraform.io/docs/configuration/functions/templatefile.html#generating-json-or-yaml-from-a-template
 
 resource "aws_iam_user" "travis" {
-  name = "travis"
+  name = "travis-vogt4nick.com-deploy"
   tags = var.common_tags
 }
 
