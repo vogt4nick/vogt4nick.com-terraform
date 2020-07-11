@@ -16,33 +16,11 @@ resource "aws_iam_access_key" "travis" {
   user = aws_iam_user.travis.name
 }
 
-resource "aws_iam_role" "DeployVogt4nickStaticSite" {
+resource "aws_iam_user_policy" "DeployVogt4nickStaticSite" {
   name = "DeployVogt4nickStaticSite"
+  user = aws_iam_user.travis.name
 
-  assume_role_policy = <<-EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "AWS": [
-          "${aws_iam_user.travis.arn}"
-        ]
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
-}
-EOF
-}
-
-resource "aws_iam_role_policy" "DeployVogt4nickStaticSite" {
-  name = "DeployVogt4nickStaticSite"
-  role = aws_iam_role.DeployVogt4nickStaticSite.id
-
-  policy = <<EOF
+  policy = <<-EOF
 {
   "Version": "2012-10-17",
   "Statement": [
