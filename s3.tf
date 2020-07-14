@@ -109,3 +109,31 @@ resource "aws_s3_bucket" "recipes_vogt4nick_com" {
 
   tags = var.common_tags
 }
+
+resource "aws_s3_bucket" "rezepte_vogt4nick_com" {
+  bucket = "rezepte.vogt4nick.com"
+  acl    = "private"
+  region = var.aws_region
+
+  website {
+    index_document = "index.html"
+    error_document = "error.html"
+  }
+
+  logging {
+    target_bucket = aws_s3_bucket.access_log.id
+    # would be nice to reference self.id, but we can't yet :(
+    # https://github.com/hashicorp/terraform/issues/925
+    target_prefix = "rezepte.vogt4nick.com/"
+  }
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
+      }
+    }
+  }
+
+  tags = var.common_tags
+}

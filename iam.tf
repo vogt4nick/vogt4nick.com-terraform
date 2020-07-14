@@ -31,7 +31,8 @@ resource "aws_iam_user_policy" "DeployVogt4nickStaticSite" {
       ],
       "Resource": [
         "${aws_s3_bucket.vogt4nick_com.arn}",
-        "${aws_s3_bucket.recipes_vogt4nick_com.arn}"
+        "${aws_s3_bucket.recipes_vogt4nick_com.arn}",
+        "${aws_s3_bucket.rezepte_vogt4nick_com.arn}"
       ]
     },
     {
@@ -47,7 +48,8 @@ resource "aws_iam_user_policy" "DeployVogt4nickStaticSite" {
       ],
       "Resource": [
         "${aws_s3_bucket.vogt4nick_com.arn}/*",
-        "${aws_s3_bucket.recipes_vogt4nick_com.arn}/*"
+        "${aws_s3_bucket.recipes_vogt4nick_com.arn}/*",
+        "${aws_s3_bucket.rezepte_vogt4nick_com.arn}/*"
       ]
     }
   ]
