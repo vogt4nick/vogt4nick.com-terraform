@@ -89,7 +89,7 @@ resource "aws_s3_bucket" "recipes_vogt4nick_com" {
 
   website {
     index_document = "index.html"
-    error_document = "error.html"
+    error_document = "404.html"
   }
 
   logging {
@@ -117,7 +117,7 @@ resource "aws_s3_bucket" "rezepte_vogt4nick_com" {
 
   website {
     index_document = "index.html"
-    error_document = "error.html"
+    error_document = "404.html"
   }
 
   logging {
