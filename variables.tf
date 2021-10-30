@@ -4,7 +4,6 @@ variable "aws_profile" {
 
 variable "aws_region" {
   description = "AWS region to run the Terraform script."
-  default     = "us-east-1"
 }
 
 variable "common_tags" {
