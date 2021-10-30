@@ -7,11 +7,16 @@ terraform {
     key            = "vogt4nick.com-terraform-state/prod/infra.tfstate"
     region         = "us-east-1"
   }
-  required_version = "= 0.12.28"
+  required_version = "~> 1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.63"
+    }
+  }
 }
 
 provider "aws" {
-  region  = var.aws_region
   profile = var.aws_profile
-  version = "~> 2.70"
+  region  = var.aws_region
 }
