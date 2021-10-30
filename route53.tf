@@ -28,6 +28,17 @@ resource "aws_route53_record" "www_vogt4nick_com" {
   }
 }
 
+resource "aws_route53_record" "blog_vogt4nick_com" {
+  name    = "blog.vogt4nick.com"
+  zone_id = data.aws_route53_zone.vogt4nick_com.id
+  type    = "A"
+  alias {
+    name                   = aws_s3_bucket.blog_vogt4nick_com.website_domain
+    zone_id                = aws_s3_bucket.blog_vogt4nick_com.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "recipes_vogt4nick_com" {
   name    = "recipes.vogt4nick.com"
   zone_id = data.aws_route53_zone.vogt4nick_com.id
