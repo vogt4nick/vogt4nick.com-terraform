@@ -106,55 +106,6 @@ EOF
 }
 
 ##############################################################################
-# Deploy rezepte.vogt4nick.com ###############################################
-##############################################################################
-resource "aws_iam_user" "github_deploy_rezepte_vogt4nick_com" {
-  name = "github-deploy-rezepte.vogt4nick.com"
-  tags = var.common_tags
-}
-
-resource "aws_iam_access_key" "github_deploy_rezepte_vogt4nick_com" {
-  user = aws_iam_user.github_deploy_rezepte_vogt4nick_com.name
-}
-
-resource "aws_iam_user_policy" "github_deploy_rezepte_vogt4nick_com" {
-  name = "DeployRezepteVogt4nickStaticSite"
-  user = aws_iam_user.github_deploy_rezepte_vogt4nick_com.name
-
-  policy = <<-EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:ListBucket"
-      ],
-      "Resource": [
-        "${aws_s3_bucket.rezepte_vogt4nick_com.arn}"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:AbortMultipartUpload",
-        "s3:DeleteObject",
-        "s3:GetObject",
-        "s3:GetObjectAcl",
-        "s3:ListObjectsV2",
-        "s3:PutObject",
-        "s3:PutObjectAcl"
-      ],
-      "Resource": [
-        "${aws_s3_bucket.rezepte_vogt4nick_com.arn}/*"
-      ]
-    }
-  ]
-}
-EOF
-}
-
-##############################################################################
 # Deploy vogt4nick.com #######################################################
 ##############################################################################
 resource "aws_iam_user" "github_deploy_vogt4nick_com" {

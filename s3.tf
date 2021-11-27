@@ -138,8 +138,7 @@ resource "aws_s3_bucket" "rezepte_vogt4nick_com" {
   acl    = "private"
 
   website {
-    index_document = "index.html"
-    error_document = "404.html"
+    redirect_all_requests_to = "${aws_s3_bucket.recipes_vogt4nick_com.id}/at"
   }
 
   logging {
