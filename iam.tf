@@ -82,7 +82,8 @@ resource "aws_iam_user_policy" "github_deploy_recipes_vogt4nick_com" {
         "s3:ListBucket"
       ],
       "Resource": [
-        "${aws_s3_bucket.recipes_vogt4nick_com.arn}"
+        "${aws_s3_bucket.recipes_vogt4nick_com.arn}",
+        "${aws_s3_bucket.recipes_dev_vogt4nick_com.arn}"
       ]
     },
     {
@@ -97,7 +98,8 @@ resource "aws_iam_user_policy" "github_deploy_recipes_vogt4nick_com" {
         "s3:PutObjectAcl"
       ],
       "Resource": [
-        "${aws_s3_bucket.recipes_vogt4nick_com.arn}/*"
+        "${aws_s3_bucket.recipes_vogt4nick_com.arn}/*",
+        "${aws_s3_bucket.recipes_dev_vogt4nick_com.arn}/*"
       ]
     }
   ]
